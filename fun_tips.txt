@@ -1,0 +1,7 @@
+python virtual environment
+-   python -m venv venv (create virtual environment)
+-   source/bin/activate (activate virtual env eg in Linux)
+-   install required project dependencies
+-   pip freeze > requirements.txt (export dependencies). This file can be added to Github
+-   pip install -r requirements.txt (installing dependencies from requirements.txt)
+-   (add venv to .gitignore)
