@@ -51,4 +51,4 @@ def num(n):
 def num_template(n):
     """Returns HTML rendered template"""
     if n:
-        return render_template('5-number.html', number=n)
+        return render_template('5-number.html', n=n)
