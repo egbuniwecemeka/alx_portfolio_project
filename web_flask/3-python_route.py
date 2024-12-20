@@ -48,7 +48,19 @@ def num(n):
 
 # Route to HTML rendered endpoint
 @app.route('/number_template/<int:n>', strict_slashes=False)
-def num_template(n):
+def num_temp(n):
     """Returns HTML rendered template"""
     if n:
         return render_template('5-number.html', n=n)
+
+
+# Route to HTML rendered endpoint
+@app.route('/number_odd_or_even/<int:n>', strict_slashes=False)
+def num_temp_even_odd(n):
+    """Returns HTML rendered template"""
+    if n % 2 == 0:
+        value = 'even'
+    else:
+        value = 'odd'
+
+    return render_template('6-nmber_odd_or_even', n=value)
