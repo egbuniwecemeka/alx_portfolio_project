@@ -31,7 +31,7 @@ def language_c(text):
 # Route to URL variable endpoint with a formatted default value,
 @app.route('/python/', defaults={'text': 'is cool'}, strict_slashes=False)
 @app.route('/python/string:<text>', strict_slashes=False)
-def language_c(text):
+def language_python(text):
     """Returns HTML formatted replaced output"""
     string = 'Python is '
     return f'{string} {text.replace("_", " ")}'
