@@ -25,7 +25,7 @@ def hbnb():
 def language_c(text):
     """Returns HTML formatted replaced content"""
     string = 'C is'
-    return f'{string} {text}'
+    return f'{string} {text.replace("_", " ")}'
 
 
 # Route to URL variable endpoint with a formatted default value,
@@ -34,7 +34,7 @@ def language_c(text):
 def language_c(text):
     """Returns HTML formatted replaced output"""
     string = 'Python is '
-    return f'{string} {text.replace('_', ' ')}'
+    return f'{string} {text.replace("_", " ")}'
 
 
 
