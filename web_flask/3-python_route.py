@@ -63,4 +63,4 @@ def num_temp_even_odd(n):
     else:
         value = 'odd'
 
-    return render_template('6-nmber_odd_or_even.html', n=value)
+    return render_template('6-nmber_odd_or_even.html', n=n, value=value)
