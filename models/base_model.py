@@ -46,4 +46,9 @@ class BaseModel:
             self.created_at = self.updated_at = datetime.now()
 
     def __str__(self):
+        """Returns the string representation of class name/attributes"""
         return f"[{self.__class__.__name__}] ({self.id}) ({self.__dict__})"
+    
+    def save(self):
+        """Updates current datetime of update_at attribute"""
+        self.updated_at = datetime.now()
