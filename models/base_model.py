@@ -44,3 +44,6 @@ class BaseModel:
         else:
             self.id = str(uuid4())
             self.created_at = self.updated_at = datetime.now()
+
+    def __str__(self):
+        return f"[{self.__class__.__name__}]"
