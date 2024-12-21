@@ -58,7 +58,7 @@ class BaseModel:
         dictionary = {}
         dictionary.update(self.__dict__)
         dictionary.update({self.__class__: self.__class__.__name__})
-        dictionary['created_at'] = datetime.isoformat()
-        dictionary['updated_at'] = datetime.isoformat()
+        dictionary['created_at'] = self.created_at.isoformat()
+        dictionary['updated_at'] = self.updated_at.isoformat()
 
         return dictionary
