@@ -4,7 +4,7 @@
 # Imports
 from uuid import uuid4
 from datetime import datetime
-from sqlalchemy import Column, Datetime, String
+from sqlalchemy import Column, DateTime, String
 
 class BaseModel:
     """BaseModel(Parent) class that defines attribute/methods for other classes"""
@@ -13,9 +13,9 @@ class BaseModel:
     # id - unique identifier for each instance
     id = Column(String(60), nullable=False, primary_key=True, unique=True)
     # created_at - timestamp for recording instance creation
-    created_at = Column(Datetime, default=(datetime.utcnow()), nullable=False)
+    created_at = Column(DateTime, default=(datetime.utcnow()), nullable=False)
     # updated_at - timestamp for recording instance update(s)
-    updated_at = Column(Datetime, default=(datetime.utcnow()), nullable=False)
+    updated_at = Column(DateTime, default=(datetime.utcnow()), nullable=False)
 
     def __init__(self, *args, **kwargs):
         """Initializes a new base model based on arguments passed
