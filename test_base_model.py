@@ -6,5 +6,6 @@ my_model.name = "My First Model"
 my_model.my_number = 89
 print(my_model)
 my_model.save()
-print()
-print(my_model)
+print(f"\n{my_model}")
+my_model_json = my_model.to_dict()
+print(f"\n{my_model_json}")

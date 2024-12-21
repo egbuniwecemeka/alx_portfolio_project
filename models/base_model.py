@@ -52,3 +52,13 @@ class BaseModel:
     def save(self):
         """Updates current datetime of update_at attribute"""
         self.updated_at = datetime.now()
+    
+    def to_dict(self):
+        """returns a dictionary containing key/value of __dict__ instance"""
+        dictionary = {}
+        dictionary.update(self.__dict__)
+        dictionary.update({self.__class__: self.__class__.__name__})
+        dictionary['created_at'] = datetime.isoformat()
+        dictionary['updated_at'] = datetime.isoformat()
+
+        return dictionary
