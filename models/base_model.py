@@ -26,7 +26,7 @@ class BaseModel:
         """
         if kwargs:
             for key, value in kwargs.items():
-                # Convert string timstamp format to datetime objects
+                # Convert string timestamp format to datetime objects
                 if key == 'created_at' or key == 'updated_at':
                     value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                 # Ignores __class__ key if present & sets instance attribute
