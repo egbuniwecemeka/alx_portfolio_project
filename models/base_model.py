@@ -5,7 +5,6 @@
 from uuid import uuid4
 from datetime import datetime
 from sqlalchemy import Column, DateTime, String
-from models import storage
 
 class BaseModel:
     """BaseModel(Parent) class that defines attribute/methods for other classes"""
@@ -52,6 +51,7 @@ class BaseModel:
     
     def save(self):
         """Updates current datetime of update_at attribute"""
+        from models import storage
         self.updated_at = datetime.now()
         storage.save()
         storage.new(self)
