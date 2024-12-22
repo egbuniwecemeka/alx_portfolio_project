@@ -3,7 +3,7 @@ import cmd
 class HBNBCommand(cmd.Cmd):
     """Command interpreter class"""
     def do_greet(self, line):
-        return 'Hello'
+        print('Hello')
     
     def do_EOF(self, line):
         return True
