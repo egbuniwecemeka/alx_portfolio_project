@@ -53,8 +53,8 @@ class BaseModel:
         """Updates current datetime of update_at attribute"""
         from models import storage
         self.updated_at = datetime.now()
-        storage.save()
         storage.new(self)
+        storage.save()
     
     def to_dict(self):
         """returns a dictionary containing key/value of __dict__ instance"""
