@@ -15,9 +15,13 @@ class HBNBCommand(cmd.Cmd):
         
         class_name = line.strip()
         try:
+            # Dynamically retrieve class name
             cls = eval(class_name)
+            # create an instance of the class
             new_model = cls()
+            # Saves instance to storage
             new_model.save()
+            # Print unique id of instance
             print(new_model.id)
         except NameError:
             print("** class doesn't exist **")
@@ -34,6 +38,10 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         """Does nothing on empty input"""
         pass
+
+    def help_create(self):
+        """Help information for create command"""
+        print('Usage: create <className>')
 
     def help_quit(self):
         """Help information for quit"""
