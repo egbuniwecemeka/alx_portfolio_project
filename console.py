@@ -29,7 +29,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, line):
         """Prints string format of an instance based on class name and id"""
-        command_args = line.strip()
+        command_args = line.split()
         # Check if class name is provided
         if len(command_args) < 1:
             print('** class name missing **')
