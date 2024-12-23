@@ -108,6 +108,10 @@ class HBNBCommand(cmd.Cmd):
         """Help information for create command"""
         print('Usage: create <className>')
 
+    def help_destroy(self):
+        """Help information for destroy command"""
+        print('Usage: destroy <className> <classID>')
+
     def help_quit(self):
         """Help information for quit"""
         print('Exits the program. Usage: quit')
