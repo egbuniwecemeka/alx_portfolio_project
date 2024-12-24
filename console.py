@@ -104,9 +104,10 @@ class HBNBCommand(cmd.Cmd):
         all_objects = storage.all()
         # if no class name, print all instances
         if not line.strip():
-            print(str(obj) for obj in all_objects.values())
+            print([str(obj) for obj in all_objects.values()])
             return
         
+        # Validate the class name
         class_name = line.strip()
         try:
             cls = eval(class_name)
@@ -114,10 +115,81 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
         
+        # Filters instances by class and print
         result = [str(obj) for obj in all_objects.values()
             if isinstance(obj, cls)]
         print(result)
+
+    def do_update(self, line):
+        """Updates an instance based on class name and id"""
+        command_args = line.split()
+
+        # check for empty input devoid of whitespaces
+        if not line.strip():
+            print('** class name missing **')
+            return
         
+        # check for class name
+        if len(command_args) < 1:
+            print('** class name missing **')
+            return
+        
+        # Validate class name
+        class_name = command_args[0]
+        try:
+            cls = eval(class_name)
+        except NameError:
+            print("** class doesn't exist **")
+            return
+        
+        # Check for instance id
+        if len(command_args) < 2:
+            print('** instance id missing **')
+            return
+        
+        class_id = command_args[1]
+        key = f"{class_name}.{class_id}"
+        all_objects = storage.all()
+
+        # Check if instance exists
+        if key not in all_objects:
+            print('** instance id missing **')
+            return
+        
+        # Check for attribute name
+        if len(command_args) < 3:
+            print('** attribute name missing **')
+            return
+        
+        attribute_name = command_args[2]
+
+        # Check for attribute value
+        if len(command_args) < 4:
+            print('** value missing **')
+            return
+        
+        attribute_value = command_args[3].strip('"')
+
+        # Prevent updating restricted attributes
+        if attribute_name in {"id", "created_at", "updated_at"}:
+            return
+        
+        # Pair attribute value to correct type
+        instance = all_objects[key]
+        if attribute_name in instance.__class__.__dict__:
+            attribute_type = type(getattr(instance.__class__, attribute_name))
+            try:
+                attribute_value = attribute_type(attribute_value)
+            except NameError:
+                print(f"Invalid vale type for {attribute_name}")
+                return
+        
+        # Update the instance and save
+        setattr(instance, attribute_name, attribute_value)
+        instance.save()
+        storage.save()
+  
+
     def do_quit(self, line):
         """Exits the program"""
         return True
@@ -142,6 +214,12 @@ class HBNBCommand(cmd.Cmd):
     def help_all(self):
         """Help information from all command"""
         print('Usage: all <className> || all')
+
+    def help_update(self):
+        """Help information for update command"""
+        print('Usage: update <class name> <id> <attribute name>\
+              "<attribute value>"')
+
     def help_quit(self):
         """Help information for quit"""
         print('Exits the program. Usage: quit')
