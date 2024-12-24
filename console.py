@@ -29,6 +29,10 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, line):
         """Prints string format of an instance based on class name and id"""
+        if not line.strip():
+            print("** class name missing **")
+            return
+        
         command_args = line.split()
         # Check if class name is provided
         if len(command_args) < 1:
@@ -62,6 +66,10 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, line):
         """Deletes an instance based on the class name and id"""
+        if not line.strip():
+            print("** class name missing **")
+            return
+        
         command_args = line.split()
         if len(command_args) < 1:
             print("** class name missing **")
@@ -90,6 +98,26 @@ class HBNBCommand(cmd.Cmd):
         # Deletes the instance and save changes
         del all_objects[key]
         storage.save()
+
+    def do_all(self, line):
+        """Prints string representation of all instances"""
+        # Checks if input is empty devoid of whitespaces
+        if not line.strip():
+            print("** class name missing **")
+            return
+        
+        class_name = line.strip()
+        try:
+            cls = eval(class_name)
+        except NameError:
+            print("** class doesn't exist **")
+            return
+        
+        all_objects = storage.all()
+        result = [str(obj) for obj in all_objects.values()
+            if isinstance(obj, cls)]
+        print(result)
+        
 
     def do_quit(self, line):
         """Exits the program"""
