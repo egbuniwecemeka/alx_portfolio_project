@@ -101,9 +101,10 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, line):
         """Prints string representation of all instances"""
-        # Checks if input is empty devoid of whitespaces
+        all_objects = storage.all()
+        # if no class name, print all instances
         if not line.strip():
-            print("** class name missing **")
+            print(str(obj) for obj in all_objects.values())
             return
         
         class_name = line.strip()
@@ -113,7 +114,6 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
         
-        all_objects = storage.all()
         result = [str(obj) for obj in all_objects.values()
             if isinstance(obj, cls)]
         print(result)
