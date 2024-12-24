@@ -187,8 +187,7 @@ class HBNBCommand(cmd.Cmd):
         # Update the instance and save
         setattr(instance, attribute_name, attribute_value)
         instance.save()
-        storage.save()
-  
+        storage.save()  
 
     def do_quit(self, line):
         """Exits the program"""
