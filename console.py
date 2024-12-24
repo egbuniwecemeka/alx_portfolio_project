@@ -118,7 +118,6 @@ class HBNBCommand(cmd.Cmd):
             if isinstance(obj, cls)]
         print(result)
         
-
     def do_quit(self, line):
         """Exits the program"""
         return True
@@ -140,6 +139,9 @@ class HBNBCommand(cmd.Cmd):
         """Help information for destroy command"""
         print('Usage: destroy <className> <classID>')
 
+    def help_all(self):
+        """Help information from all command"""
+        print('Usage: all <className> || all')
     def help_quit(self):
         """Help information for quit"""
         print('Exits the program. Usage: quit')
