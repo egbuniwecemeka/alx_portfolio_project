@@ -14,19 +14,46 @@ class HBNBCommand(cmd.Cmd):
             print('** class name missing **')
             return
         
-        # Strips input of leading or trailing whitespaces
-        class_name = line.strip()
+        # Split input into class name and parameters
+        args = line.split()
+        class_name = args[0]
+
         try:
             # Dynamically retrieve class name
             cls = eval(class_name)
-            # create an instance of the class
-            new_model = cls()
-            # Saves instance to storage
-            new_model.save()
-            # Print unique id of instance
-            print(new_model.id)
         except NameError:
             print("** class doesn't exist **")
+            return
+        
+        # create an instance of the class
+        new_model = cls()
+
+        for param in args[1:]:
+            if "=" in param:
+                key, value = param.split("=", 1)
+
+                # Handles value types
+                if value.startswith('"') and value.endswith('"'):   # String
+                    value = value[1:-1].replace("\\\"", '\"').replace("_", " ")
+                elif "." in value:  # Float
+                    try:
+                        value = float(value)
+                    except ValueError:
+                        continue
+                else:   # Integer
+                    try:
+                        value = int(value)
+                    except ValueError:
+                        continue
+
+                # Set the new attribtes on the instance
+                setattr(new_model, key, value)
+
+        # Saves instance to storage
+        new_model.save()
+        # Print unique id of instance
+        print(new_model.id)
+        
 
     def do_show(self, line):
         """Prints string format of an instance based on class name and id"""
