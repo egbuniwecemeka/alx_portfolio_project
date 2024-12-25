@@ -2,8 +2,9 @@ from json import dump, load
 from os.path import exists
 from models.base_model import BaseModel
 from models.user import User
+from models.state import State
 
-classes = {"BaseModel": BaseModel, "User": User}
+classes = {"BaseModel": BaseModel, "User": User, "State": State}
 
 
 class FileStorage:
