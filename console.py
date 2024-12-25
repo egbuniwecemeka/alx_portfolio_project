@@ -53,7 +53,6 @@ class HBNBCommand(cmd.Cmd):
         new_model.save()
         # Print unique id of instance
         print(new_model.id)
-        
 
     def do_show(self, line):
         """Prints string format of an instance based on class name and id"""
