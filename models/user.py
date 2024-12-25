@@ -1,5 +1,4 @@
 from models.base_model import BaseModel
-from sqlalchemy import Column, String
 
 class User(BaseModel):
     """User class that inherits from BaseModel
