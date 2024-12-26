@@ -1,0 +1,3 @@
+create State name="Lagos"
+create State name="London"
+all State
