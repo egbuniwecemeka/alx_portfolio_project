@@ -19,7 +19,7 @@ class FileStorage:
         if cls is None:
             return self.__objects
         
-        filtered_objects = {key for key, obj in self.__objects.items() if isinstance(obj, cls)}
+        filtered_objects = {key: obj for key, obj in self.__objects.items() if isinstance(obj, cls)}
         return filtered_objects
 
     def new(self, obj):
