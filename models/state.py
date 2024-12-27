@@ -6,6 +6,6 @@ from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
 
 
-class State(BaseModel, Base):
+class State(BaseModel):
     """State class inheriting from BaseModel"""
     name = ""
