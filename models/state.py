@@ -8,8 +8,10 @@ from sqlalchemy.orm import relationship
 
 class State(BaseModel, Base):
     """State class inheriting from BaseModel"""
+
     # Public class attribute
     __tablename__ = 'states'
+
     if getenv('HBNB_TYPE_STORAGE') == 'db':
         name = Column(String(128), nullable=False)
         cities = relationship("City", backref='state',
