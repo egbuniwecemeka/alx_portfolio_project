@@ -1,5 +1,5 @@
 from os import getenv
-from models import storage
+import  models
 from models.base_model import BaseModel, Base
 from models.city import City
 from sqlalchemy import Column, String
@@ -23,5 +23,5 @@ class State(BaseModel, Base):
         """Returns the list of City instances
             where state_id euals to the current State.id
         """
-        all_cities = storage.all(City)
+        all_cities = models.storage.all(City)
         return [city for city in all_cities.values() if city.state_id == self.id]
