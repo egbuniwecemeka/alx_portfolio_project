@@ -62,7 +62,7 @@ class BaseModel:
     
     def to_dict(self):
         """returns a dictionary containing key/value of __dict__ instance"""
-        dictionary = {key: value for key, value in self.__dict__.items() if key != '_sa_instance_state'}
+        dictionary = {key: value for key, value in self.__dict__.items() if key not in ['_sa_instance_state']}
         dictionary.update(self.__dict__)
         dictionary.update({'__class__': self.__class__.__name__})
         dictionary['created_at'] = self.created_at.isoformat()
