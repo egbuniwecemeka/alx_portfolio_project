@@ -49,12 +49,12 @@ class DBStorage:
             # Query all objects from all classes
             for class_obj in Base.__subclasses__():   # Get all subclasses of Base
                  for obj in self.__session.query(class_obj).all():
-                     objects[f"{class_obj.__name__}.{obj.id}"] = obj.to_dict()
+                     objects[f"{class_obj.__name__}.{obj.id}"] = obj
         else:
             # Query all objects of the specified class
             objs = self.__session.query(cls).all()
             for obj in objs:
-                objects[f"{cls.__name__}.{obj.id}"] = obj.to_dict()
+                objects[f"{cls.__name__}.{obj.id}"] = obj
         
         return objects
     
