@@ -25,3 +25,12 @@ class State(BaseModel, Base):
         """
         all_cities = models.storage.all(City)
         return [city for city in all_cities.values() if city.state_id == self.id]
+    
+    def to_dict(self):
+        """Convert instance to a dictionary"""
+        return {
+            "id": self.id,
+            "name": self.name,
+            "created_at":self.created_at.isoformat() if self.created_at else None,
+            "updated_at":self.updated_at.isoformat() if self.updated_at else None
+        }
