@@ -68,7 +68,7 @@ class BaseModel:
             '__class__': self.__class__.__name__,
             'created_at': self.created_at.isoformat(),
             'updated_at': self.updated_at.isoformat()
-            })
+        })
 
         return dictionary
     
