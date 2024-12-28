@@ -20,9 +20,10 @@ class State(BaseModel, Base):
 
     @property
     def cities(self):
-        """Returns the list of City instances
-            where state_id euals to the current State.id
+        """Returns the list of City instances associated to the current state
         """
-        all_cities = models.storage.all(City)
-        return [city for city in all_cities.values() if city.state_id == self.id]
+        if getenv('HBNB_TYPE_STORAGE') != 'db':
+            all_cities = models.storage.all(City)
+            return [city for city in all_cities.values() if city.state_id == self.id]
+        return []
     
