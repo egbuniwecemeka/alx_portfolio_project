@@ -47,8 +47,7 @@ class DBStorage:
         objects = {}
         if cls is None:
             # Query all objects from all classes
-            for class_name in self.__session.registry.mappers:
-                 class_obj = class_name.class_
+            for class_obj in Base.__subclasses__:   # Get all subclasses of Base
                  for obj in self.__session.query(class_obj).all():
                      objects[f"{class_obj.__name__}.{obj.id}"] = obj
         else:
