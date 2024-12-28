@@ -5,4 +5,4 @@ class City(BaseModel, Base):
     """City class inheriting from BaseModel"""
     __tablename__ = "cities"
     name = Column(String(128), nullable=False)
-    state_id = Column(String(60), ForeignKey('state.id'), nullable=False)
+    state_id = Column(String(60), ForeignKey('states.id'), nullable=False)
