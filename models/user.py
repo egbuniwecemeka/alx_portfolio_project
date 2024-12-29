@@ -1,5 +1,4 @@
 from models.base_model import BaseModel, Base
-from models.place import Place
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
 
@@ -15,5 +14,5 @@ class User(BaseModel, Base):
     last_name = Column(String(128), nullable=True)
     places = relationship('Place', cascade=['all', 'delete-orphan'],
                           backref='user')
-    reviews = relationship('Reviews', cascade=['all', 'delete-orphan'],
+    reviews = relationship('Review', cascade=['all', 'delete-orphan'],
                            backref='user')
