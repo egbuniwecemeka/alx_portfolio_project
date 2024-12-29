@@ -1,5 +1,9 @@
+from models import storage
+from os import getenv
 from models.base_model import BaseModel, Base
+from models.review import Review
 from sqlalchemy import Column, String, ForeignKey, Integer, Float
+from sqlalchemy.orm import relationship
 
 class Place(BaseModel, Base):
     """Place class inheriting from BaseModel"""
@@ -17,3 +21,21 @@ class Place(BaseModel, Base):
     latitude = Column(Float, nullable=False)
     longitude = Column(Float, nullable=False)
     amenity_ids = []
+
+    if getenv('HBNB_TYPE_STORAGE') == 'db':
+        # Reltionship for DBStorage
+        reviews = relationship(
+            'Review',
+            cascade=['all', 'delete-orphan'],
+            backref='place'
+        )
+    else:
+        @property
+        def reviews(self):
+            """Returns the list of Reviews instances associated to current place"""
+            all_reviews = storage.all(Review)
+            return [
+                review for review in all_reviews.values()
+                if review.place_id == self.id
+            ]
+            
