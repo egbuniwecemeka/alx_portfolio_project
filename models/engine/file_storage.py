@@ -59,3 +59,7 @@ class FileStorage:
         # Deletes the object if key found in _objects
         if key in self.__objects:
             del self.__objects[key]
+    
+    def close(self):
+        """Reloads objects from the JSON file"""
+        self.reload()
