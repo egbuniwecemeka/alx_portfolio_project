@@ -1,4 +1,4 @@
-from models import storage
+import models
 from os import getenv
 from models.base_model import BaseModel, Base
 from models.review import Review
@@ -33,7 +33,7 @@ class Place(BaseModel, Base):
         @property
         def reviews(self):
             """Returns the list of Reviews instances associated to current place"""
-            all_reviews = storage.all(Review)
+            all_reviews = models.storage.all(Review)
             return [
                 review for review in all_reviews.values()
                 if review.place_id == self.id
