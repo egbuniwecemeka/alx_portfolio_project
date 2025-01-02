@@ -8,20 +8,20 @@
 <body>
     <h1>States</h1>
     <ul>
-        {{% if states %}}
-            {{% for state in states.values()|sort(attribute='name') %}}
+        {% if states %}
+            {% for state in states.values()|sort(attribute='name') %}
                 <li>
                     {{ state[1] }}: <b>{{ state[2]}}</b>
                     <ul>
-                        {{% for city in state[3]|sort(attribute='name') %}}
+                        {% for city in state[3]|sort(attribute='name') %}
                         <li>{{ city['id']}}: {{ city['name']}}</li>
-                        {{% endfor %}}
+                        {% endfor %}
                     </ul>
                 </li>
-            {{% endfor %}}
-        {{% else %}}  
+            {% endfor %}
+        {% else %}
             <p>No states found!</p>
-        {{% endif %}}
+        {% endif %}
     </ul>
 </body>
 </html>

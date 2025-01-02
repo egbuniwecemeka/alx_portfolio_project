@@ -18,7 +18,7 @@ def teardown_session(exception=None):
 
 @app.route('/cities_by_states', strict_slashes=False)
 def state_cities():
-    """"""
+    """Render cities assocoated to a state"""
     states = storage.all(State)
     #Use city relationship if storage is DBStorage
     if getenv('HBNB_TYPE_STORAGE') == 'db':
