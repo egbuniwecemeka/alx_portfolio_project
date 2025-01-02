@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>States and its cities</title>
+</head>
+<body>
+    <h1>States</h1>
+    <ul>
+        {{% if states %}}
+            {{% for state in states.values()|sort(attribute='name') %}}
+                <li>
+                    {{ state[1] }}: <b>{{ state[2]}}</b>
+                    <ul>
+                        {{% for city in state[3]|sort(attribute='name') %}}
+                        <li>{{ city['id']}}: {{ city['name']}}</li>
+                        {{% endfor %}}
+                    </ul>
+                </li>
+            {{% endfor %}}
+        {{% else %}}  
+            <p>No states found!</p>
+        {{% endif %}}
+    </ul>
+</body>
+</html>
