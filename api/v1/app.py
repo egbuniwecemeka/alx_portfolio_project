@@ -17,10 +17,10 @@ def reload(exception=None):
     storage.close()
 
 
-@app.errorhandler(404)
+""" @app.errorhandler(404)
 def error(exception=None):
-    """Returns 404 status code on error"""
-    return jsonify({'error': 'Not found'}), 404
+    Returns 404 status code on error
+    return jsonify({'error': 'Not found'}), 404 """
 
 
 if __name__ == '__main__':
