@@ -23,5 +23,7 @@ def stats():
     """Retrieves the number of each objects by type"""
     classes = [Amenity, City, Place, Review, State, User]
     names = ['amenities', 'cities', 'places', 'states', 'users']
-    stats_data = {names[obj]: storage.count(classes[obj]) for obj in range(len(classes))}
-    return jsonify(stats_data)
+    num_objs = {}
+    for obj in range(len(classes)):
+        num_objs[names[obj]] = storage.count(classes[obj])
+    return jsonify(num_objs)
