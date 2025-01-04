@@ -24,6 +24,6 @@ def error():
 
 
 if __name__ == '__main__':
-    host_user = getenv('HBNB_API_HOST') | '0.0.0.0'
-    port_user = getenv('HBNB_API_PORT') | 5000
+    host_user = getenv('HBNB_API_HOST') or '0.0.0.0'
+    port_user = getenv('HBNB_API_PORT') or 5000
     app.run(host=host_user, port=port_user)
