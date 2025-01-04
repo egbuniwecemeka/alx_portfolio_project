@@ -80,3 +80,20 @@ class DBStorage:
     def close(self):
         """Closes the current session"""
         self.__session.remove()
+
+    def get(self, cls, id):
+        """Retrieves an object based on a class and its ID"""
+        if cls is None or id is None:
+            return None
+        obj = self.__session.query(cls).filter_by(id=id).first()
+        return obj
+    
+    def count(self, cls=None):
+        """Returns the number of objects matching the given class"""
+        if cls is None:
+            obj = sum(self.__session.query(class_obj).count()
+                      for class_obj in Base.__subclasses__()
+            )
+        else:
+            obj = self.__session.query(cls).count()
+            return obj

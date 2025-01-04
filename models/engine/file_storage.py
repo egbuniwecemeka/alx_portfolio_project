@@ -63,3 +63,22 @@ class FileStorage:
     def close(self):
         """Reloads objects from the JSON file"""
         self.reload()
+
+    def get(self, cls, id):
+        """Retrieves an object based on its class and ID"""
+        if cls is None or id is None:
+            return None
+        
+        # Construct key to query object in __objects
+        key = f'{cls.__name__}.{id}'
+
+        # Return the object if it exists in __objects, otherwise return None
+        return self.__objects.get(key, None)
+    
+    def count(self, cls=None):
+        """Returns objects for a given class, otherwise it returns all objects"""
+        if cls is None:
+            return len(self.__objects)
+        
+        # Counts objects of the specified class
+        return len(self.all(cls))
