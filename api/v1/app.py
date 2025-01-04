@@ -12,8 +12,8 @@ app.register_blueprint(app_views)
 
 
 @app.teardown_appcontext
-def reload():
-    """"""
+def reload(exception=None):
+    """Closes session after each request"""
     storage.close()
 
 
