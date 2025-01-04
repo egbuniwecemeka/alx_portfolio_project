@@ -20,7 +20,7 @@ def reload(exception=None):
 @app.errorhandler(404)
 def error():
     """Returns 404 status code on error"""
-    return jsonify({'error': 'Not found'})
+    return jsonify({'error': 'Not found'}), 404
 
 
 if __name__ == '__main__':
