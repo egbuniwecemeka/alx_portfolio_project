@@ -96,4 +96,4 @@ class DBStorage:
             )
         else:
             obj = self.__session.query(cls).count()
-            return obj
+        return obj
