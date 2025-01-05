@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 
 # Route definition to URL triggering function
-@app.route('/', strict_slashes=False)
+@app.route('/home', strict_slashes=False)
 def home_page():
     return render_template('home.html')
 
