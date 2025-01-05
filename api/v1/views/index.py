@@ -21,9 +21,15 @@ def status():
 @app_views.route('/stats', methods=['GET'], strict_slashes=False)
 def stats():
     """Retrieves the number of each objects by type"""
-    classes = [Amenity, City, Place, Review, State, User]
-    names = ['amenities', 'cities', 'places', 'states', 'users']
-    num_objs = {}
-    for obj in range(len(classes)):
-        num_objs[names[obj]] = storage.count(classes[obj])
+
+    classes = {
+        'amenities': Amenity,
+        'cities': City,
+        'places': Place,
+        'reviews': Review,
+        'states': State,
+        'users': User,
+    }
+
+    num_objs = {key: storage.count(cls) for key, cls in classes.items()}
     return jsonify(num_objs)
