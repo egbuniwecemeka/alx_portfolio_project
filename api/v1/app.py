@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-"""A python script with endpoints(routes) to API"""
+""" A flask application """
 
-from flask import Flask, jsonify
+from flask import Flask, jsonify, make_response
 from models import storage
 from api.v1.views import app_views
-from os import getenv
+from os import environ
 
 
 app = Flask(__name__)
@@ -12,18 +12,23 @@ app.register_blueprint(app_views)
 
 
 @app.teardown_appcontext
-def reload(exception=None):
-    """Closes session after each request"""
+def close_storage(error):
+    """ close storage on error and after every request"""
     storage.close()
 
 
-""" @app.errorhandler(404)
-def error(exception=None):
-    Returns 404 status code on error
-    return jsonify({'error': 'Not found'}), 404 """
+@app.errorhandler(404)
+def error404(error):
+    """ Handles 404 error """
+    return make_response(jsonify({'error': 'Not found'}), 404)
 
 
-if __name__ == '__main__':
-    host_user = getenv('HBNB_API_HOST') or '0.0.0.0'
-    port_user = getenv('HBNB_API_PORT') or 5000
-    app.run(host=host_user, port=port_user)
+if __name__ == "__main__":
+    """ Run only when executed as main function """
+    host = environ.get('HBNB_API_HOST')
+    port = environ.get('HBNB_API_PORT')
+    if not host:
+        host = '0.0.0.0'
+    if not port:
+        port = '5000'
+    app.run(host=host, port=port, threaded=True)
