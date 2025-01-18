@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJ's Hatchery</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header class="header">
+        <nav>
+            <a href="#"><img src="{{ url_for('static', filename='images/th.jpeg') }}" alt="ejfarms logo" class="logo"></a>
+            <ul id="nav_list">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Orders</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <button class="darkmode">Dark Mode</button>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <section class="filters">
+            <button>Search</button>
+
+            <div class="locations">
+                <h3>States</h3>
+                <h4>text with fake contents</h4>
+                <div class="dropdown">
+                    <ul class="popover">
+                        <h2>Lagos</h2>
+                        <li>Text 1</li>
+                        <li>Text 2</li>
+                    </ul>
+
+                    <ul class="popover">
+                        <h2>Kaduna</h2>
+                        <li>Text 1</li>
+                        <li>Text 2</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="services">
+                <h3>Services</h3>
+                <h4>text with fake contents</h4>
+                <div class="dropdown">
+                    <ul class="popover">
+                        <li>Broilers</li>
+                        <li>Turkey</li>
+                        <li>Peacocks</li>
+                        <li>Dogs</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="sections">
+            <section class="places">
+                <h1>Orders</h1>
+                <article class="orders">
+                    <p></p>
+                </article>
+            </section>
+    
+            <section class="places">
+                <h1>Stores/Pickups</h1>
+                <article class="pickups">
+                    <p></p>
+                </article>
+            </section>
+            
+            <section class="places">
+                <h1>Categories</h1>
+                <article class="categories">
+                    <p></p>
+                </article>
+            </section>
+    
+            
+            <section class="places">
+                <h1>Sales</h1>
+                <article class="sales">
+                    <p></p>
+                </article>
+            </section>
+        </div>
+    </div>
+    <button onclick="">View the Project</button>
+    <footer class="footer">Egbuniwe Farms</footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../web_dynamic/1-script.js"></script>
+</body>
+</html>

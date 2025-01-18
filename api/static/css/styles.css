@@ -1,0 +1,182 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%; /* This helps in view port calculations */
+    color: #000000;
+    background-color: rgb(224, 217, 217);
+    font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.header{
+    background-color: rgb(207, 238, 162);
+    height: 70px;
+    width: 100%;
+    border-bottom: 1px #CCCCCC;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+/*  position: fixed;
+    top: 0; */
+}
+
+.header img{
+    max-height: 50px;
+    max-width: 50px;
+}
+
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* padding: 0 20px; */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#nav_list{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul li{
+    margin: 0 5px;
+    padding: 0px 5px;
+}
+
+.container{
+    max-width: 1000px;
+    margin: 30px 0;
+    margin: 2px auto;
+}
+
+.container .filters{
+    background-color: white;
+    height: 70px;
+    width: 100%;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    margin: 5px 0;
+    display: flex;
+    justify-items: flex-start;
+    position: relative; /* Ensures section is positioned relative, to allow absolute positioning of the button */
+}
+
+.container .filters button{
+    font-size: 18px;
+    background-color: #FF5A5F;
+    color: #FFFFFF;
+    height: 48px;
+    width: 20%;
+    border: none;
+    border-radius: 4px;
+
+    position: absolute; /* Allow button to be positioned in the section */
+    right: 30px; /* button position is 30px to the right */
+    top: 50%; /* Position centrally vertically */
+    transform: translateY(-50%);
+}
+
+.container .filters button:hover{
+    opacity: 0.9;
+}
+
+.filters .locations{
+    height: 100%;
+    width: 25%;
+    border-right: 1px solid #DDDDDD;
+}
+
+.filters .services{
+    height: 100%;
+    width: 25%;
+    margin: 0;
+}
+
+.filters > .services > h3,
+.filters > .services > h4,
+.filters > .locations > h3,
+.filters > .locations > h4{
+    padding: 4.9px 12.5%;
+    margin: 5px 5px 0 5px;
+}
+
+.filters > .locations > .dropdown,
+.filters > .services > .dropdown{
+    display: none;
+    background-color: #FAFAFA;
+    width: 100%;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    margin: 0;
+}
+
+.filters > .locations:hover > .dropdown,
+.filters > .services:hover > .dropdown{
+    display: block;
+}
+
+.popover{
+    list-style: none;
+}
+
+.popover h2{
+    font-size: 16px;
+}
+
+.sections{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.places{
+    height: 200px;
+    border-radius: 4px;
+}
+
+.places > h1{
+    font-size: 30px;
+    margin-top: 0;
+    margin-left: 0;
+}
+
+.places article{
+    width: 390px;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 4px;
+}
+
+.sections section:nth-child(1){
+    background-image: url('/static/images/hatch.jpeg');
+    background-size: cover;
+}
+
+.sections section:nth-child(2){
+    background-image: url('/static/images/chicks.jpeg');
+    background-size: auto;
+}
+
+.sections section:nth-child(3){
+    background-image: url('/static/images/turkey.jpeg');
+    background-size: cover;
+}
+
+.sections section:nth-child(4){
+    background-image: url('/static/images/two_chicks.jpeg');
+    background-size: cover;
+}
+
+.footer{
+    background-color: rgb(207, 238, 162);
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+}

@@ -1,0 +1,10 @@
+#!/usr/bin/python3
+"""Initializes of Flask app and Blueprints"""
+
+from flask import  Blueprint
+
+# Creste a Blueprint instance
+app_views = Blueprint('app_views', __name__, url_prefix='/')
+
+# Import routes into the Blueprint
+from api.views.home_route import *
