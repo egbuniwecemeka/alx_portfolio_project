@@ -97,3 +97,9 @@ class DBStorage:
         else:
             obj = self.__session.query(cls).count()
         return obj
+    
+    def get_user_by_username(self, username):
+        """Retrieves a user based on the username"""
+        if username is None:
+            return None
+        return self.__session.query(User).filter_by(username=username).first()

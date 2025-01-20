@@ -9,5 +9,7 @@ if getenv('HBNB_TYPE_STORAGE') == 'db':
     # Call reload method on DBStorage instance
     storage.reload()
 else:
+    # Create a unique instance of Filestorage
     storage = FileStorage()
+    # Call reload method on Filestorage instance
     storage.reload()

@@ -7,9 +7,10 @@ from models.city import City
 from models.place import Place
 from models.amenity import Amenity
 from models.review import Review
+from models.cart import Cart
 
 classes = {"BaseModel": BaseModel, "User": User, "State": State,
-           "City": City, "Place": Place, "Amenity": Amenity, "Review": Review}
+           "City": City, "Place": Place, "Amenity": Amenity, "Review": Review, "Cart": Cart}
 
 
 class FileStorage:
@@ -24,8 +25,17 @@ class FileStorage:
         if cls is None:
             return self.__objects
         
-        filtered_objects = {key: obj for key, obj in self.__objects.items() if isinstance(obj, cls)}
-        return filtered_objects
+        if isinstance(cls, str):
+            try:
+                # Dynnmaically import class
+                cls = eval(cls)
+            except NameError:
+                return {}
+        
+        if cls:
+            filtered_objects = {key: obj for key, obj in self.__objects.items() if isinstance(obj, cls)}
+            return filtered_objects
+        return self.__objects
 
     def new(self, obj):
         """sets in _objects the obj with key <obj class name>.id"""
@@ -76,9 +86,17 @@ class FileStorage:
         return self.__objects.get(key, None)
     
     def count(self, cls=None):
-        """Returns objects for a given class, otherwise it returns all objects"""
+        """Returns number of objects for a given class, otherwise it returns all objects"""
         if cls is None:
             return len(self.__objects)
         
         # Counts objects of the specified class
         return len(self.all(cls))
+    
+    def get_user_by_username(self, username):
+        """ Retrieves the object when username matches """
+        for obj in self.all('User').values():
+            if obj.username == username:
+                return obj
+        
+        return None
