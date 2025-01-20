@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart | EJ Farms</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header class="header">
+        <nav>
+            <a href="#"><img src="{{ url_for('static', filename='images/th.jpeg') }}" alt="ejfarms logo" class="logo"></a>
+            <ul id="nav_list">
+                <li><a href="{{ url_for('app_views.home_page') }}">Home</a></li>
+                <li><a href="{{ url_for('app_views.cart') }}">Orders (<span id="cart-count">0</span>)</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <button class="darkmode">Dark Mode</button>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Products</h1>
+        <section class="product-items">
+            <ul id="product-list">
+                <!-- Products will be rendered dynamically -->
+            </ul>
+        </section>
+
+        <h1>Your Cart</h1>
+        <section class="cart-items">
+            <ul id="cart-list">
+                <!-- Cart items will be rendered dynamically -->
+            </ul>
+            <div id="total-price">Total: ₦0</div>
+        </section>
+        <button onclick="checkout()">Buy</button>
+    </div>
+    <footer class="footer">Egbuniwe Farms</footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/cart.js') }}"></script>
+</body>
+</html>
