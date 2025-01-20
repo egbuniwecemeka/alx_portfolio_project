@@ -1,12 +1,10 @@
 #!/usr/bin/python3
 """A module for my cart routes"""
 
-from flask import Flask
+from api.views import app_views
+from flask import render_template
 
-
-app = Flask(__name__)
-
-
-@app.route('/cart', method=['GET'], strict_slashes=False)
+# Route to cart
+@app_views.route('/cart', methods=['GET', 'POST'], strict_slashes=False)
 def cart():
-    pass
+    return render_template('cart.html')

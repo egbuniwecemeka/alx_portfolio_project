@@ -2,15 +2,10 @@
 
 # Imported modules
 from api.views import app_views
-from flask import Flask, render_template, request, session, flash, redirect, url_for
+from flask import render_template, request, session, flash, redirect, url_for
 from models import storage
 from models.user import User
 from werkzeug.security import check_password_hash, generate_password_hash
-
-
-# Flask instance
-app = Flask(__name__)
-app.secret_key = 'your_secret_key'
 
 
 # Route endpoint to Login page
