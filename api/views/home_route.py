@@ -2,7 +2,9 @@
 
 # Imported modules
 from api.views import app_views
-from flask import render_template, request, session, flash, redirect, url_for
+from flask import (
+    render_template, request, session, flash, redirect, url_for,jsonify
+)
 from models import storage
 from models.user import User
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -11,22 +13,49 @@ from werkzeug.security import check_password_hash, generate_password_hash
 # Route endpoint to Login page
 @app_views.route('/login', methods=['GET', 'POST'], strict_slashes=False)
 def login_page():
-    """Login page"""
+    """Login page and API endpoint for authentication"""
     if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
+        # handle API requests of content type JSON
+        if request.content_type == 'application/json':
+            data = request.json
+            username = data.get('username')
+            password = data.get('password')
 
-        # Query the database for the user
-        # Define get_user_by_username method in storage engines
-        user = storage.get_user_by_username(username)
+            if not username or not password:
+                return jsonify({'error': 'Missing username or password'}), 400
+            
+            # Query the database for the user
+            # Define get_user_by_username method in storage engines
+            user = storage.get_user_by_username(username)
 
-        if user and check_password_hash(user.password, password):
-            session['username'] = username # Save the username in session
-            flash('Login successful', 'success')
-            return redirect(url_for('app_views.home_page'))
+            if user and check_password_hash(user.password, password):
+                 # Save the username and user_id in session
+                session['username'] = username
+                session['user_id'] = user.id
+                return jsonify({'message': 'Login successful', 'user_id': user.id}), 200
+                # return redirect(url_for('app_views.home_page'))
+            else:
+                return jsonify({'error': 'Incorrect username or password'})
+            
+        # Handle form submission    
         else:
-            flash('Incorrect username or password', 'error')
+            username = request.form.get('username')
+            password = request.form.get('password')
 
+            # Query the database for the user
+            user = storage.get_user_by_username(username)
+
+            if user and check_password_hash(user.password, password):
+                # Save user in the sesion
+                session['username'] = username
+                session['user_id'] = user.id
+                flash('Login successful', 'success')
+                return  redirect(url_for('app_views.home_page'))
+            else:
+                flash('Incorrect username or password', 'error')
+                return redirect(url_for('app_views.login_page'))
+
+    # Otherwise, render login page for GET request
     return render_template('login.html')
 
 

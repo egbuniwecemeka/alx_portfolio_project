@@ -38,4 +38,3 @@ class Place(BaseModel, Base):
                 review for review in all_reviews.values()
                 if review.place_id == self.id
             ]
-            

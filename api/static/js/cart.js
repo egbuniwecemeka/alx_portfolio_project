@@ -95,6 +95,32 @@ function checkout() {
         return;
     }
 
+    // Send cart data to the backend
+    fetch('/checkout', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ cart }), // Send cart data as JSON
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Cart Items not updated to database');
+        }
+        return response.json();
+    })
+    .then(data => {
+        alert(data.message);
+        cart = [];
+        updateCartItem();
+        totalPrice();
+        saveCart();
+    })
+    .catch(error =>{
+        console.error(error);
+        alert('Error, checkout failed!')
+    })
+
     alert("Thank you for shopping with us.");
     cart = [];
     updateCartItem();

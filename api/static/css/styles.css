@@ -1,22 +1,23 @@
+/* General Styling */
 html, body{
     margin: 0;
     padding: 0;
     height: 100%; /* This helps in view port calculations */
     color: #000000;
     background-color: rgb(224, 217, 217);
-    font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: Circular,"Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+/* Header */
 .header{
     background-color: rgb(207, 238, 162);
     height: 70px;
     width: 100%;
-    border-bottom: 1px #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-/*  position: fixed;
-    top: 0; */
+    padding: 0 20px;
 }
 
 .header img{
