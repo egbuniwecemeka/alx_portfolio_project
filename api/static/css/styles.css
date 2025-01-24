@@ -4,7 +4,7 @@ html, body{
     padding: 0;
     height: 100%; /* This helps in view port calculations */
     color: #000000;
-    background-color: rgb(224, 217, 217);
+    background-color: rgb(255, 255, 224);
     font-family: Circular,"Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -27,7 +27,7 @@ html, body{
 
 nav{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     /* padding: 0 20px; */
     width: 100%;
