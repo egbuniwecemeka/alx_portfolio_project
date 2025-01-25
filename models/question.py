@@ -9,9 +9,9 @@ class Question(BaseModel, Base):
     __tablename__ = 'questions'
 
     # Fields for the question model
-    question = Column(String(200), nullable=False)
-    option_1 = Column(String(100), nullable=False)
-    option_2 = Column(String(100), nullable=False)
-    option_3 = Column(String(100), nullable=False)
-    option_4 = Column(String(100), nullable=False)
+    question = Column(String(1024), nullable=False)
+    option_1 = Column(String(255), nullable=False)
+    option_2 = Column(String(255), nullable=False)
+    option_3 = Column(String(255), nullable=False)
+    option_4 = Column(String(255), nullable=False)
     correct_option = Column(Integer, nullable=False)

@@ -4,38 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz page</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/quizstyles.css') }}">
 </head>
 <body>
+    <header class="header">
+        <nav>
+            <a href="#"><img src="{{ url_for('static', filename='images/th.jpeg') }}" alt="ejfarms logo" class="logo"></a>
+            <ul id="nav_list">
+                <li><a href="#">Home</a></li>
+                <li><a href="{{ url_for('app_views.cart') }}">Orders (<span id="cart-count">0</span>)</a></li>
+                <li><a href="{{ url_for('app_views.quiz') }}">Quiz</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <button class="darkmode">Dark Mode</button>
+            </ul>
+        </nav>
+    </header>
     <div class="container">
         <h1 class="quiz-title">Quiz</h1>
         <!-- Timer Section -->
         <div id="timer" class="timer">5:00</div>
     
         <form id="quiz-form" method="POST">
-            {% for question in questions %}
-            <!-- Quiz Question -->
-            <div class="question-container">
-                <label class="question-text">{{ question.question }}</label><br>
-                <div class="option">
-                    <input type="radio" name="question{{ question.id }}" value="1" required>
-                    <label>{{ question.option_1 }}</label>
-                </div>
-                <div class="option">
-                    <input type="radio" name="question{{ question.id }}" value="2">
-                    <label>{{ question.option_2 }}</label>
-                </div>
-                <div class="option">
-                    <input type="radio" name="question{{ question.id }}" value="3">
-                    <label>{{ question.option_3 }}</label>
-                </div>
-                <div class="option">
-                    <input type="radio" name="question{{ question.id }}" value="4">
-                    <label>{{ question.option_4 }}</label>
-                </div>
-            </div>
-            {% endfor %}
-            <button type="submit" class="submit-button">Submit Quiz</button>
+            
         </form>
+        <button type="submit" class="submit-button">Submit Quiz</button>
     </div>
+    <footer class="footer">Egbuniwe Farms</footer>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/quiz.js') }}"></script>
 </body>
 </html>
