@@ -69,3 +69,4 @@ def fetch_questions():
     except Exception as e:
         return jsonify({'error', 'Failed to save data in database: {}'.format(e)}), 500
     return jsonify({'message': 'Questions fetched and stored successflly'}), 200
+    return redirect(url_for('app_views.results_routes'))

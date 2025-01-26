@@ -100,19 +100,17 @@ body {
 }
 
 .submit-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #333;
-    color: #fff;
-    font-size: 1.2em;
-    border: none;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    text-decoration: none;
     border-radius: 5px;
-    cursor: pointer;
+    font-size: 16px;
 }
-
 .submit-button:hover {
-    background-color: #555;
+    background-color: #45a049;
 }
 
 .footer {

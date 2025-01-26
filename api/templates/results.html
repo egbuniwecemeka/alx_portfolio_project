@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz page</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='css/quizstyles.css') }}">
+    <title>Results page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/resultsstyles.css') }}">
 </head>
 <body>
     <header class="header">
@@ -19,18 +19,13 @@
             </ul>
         </nav>
     </header>
-    <div class="container">
-        <h1 class="quiz-title">Quiz</h1>
-        <!-- Timer Section -->
-        <div id="timer" class="timer">5:00</div>
-    
-        <form id="quiz-form" method="POST">
-            
-        </form>
-        <a href="{{ url_for('app_views.results') }}" class="submit-button">Submit Quiz</a>
-    </div>
-    <footer class="footer">Egbuniwe Farms</footer>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/quiz.js') }}"></script>
+    <body>
+        <div class="results-container">
+            <h1>Thank You!</h1>
+            <p>We appreciate your participation in the quiz.</p>
+            <p>Your results have been recorded.</p>
+            <a href="{{ url_for('app_views.quiz')}}" class="btn">Try Again</a>
+        </div>
+    </body>
 </body>
 </html>
