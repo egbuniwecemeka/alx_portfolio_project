@@ -11,10 +11,10 @@
         <nav>
             <a href="{{ url_for('app_views.home_page') }}"><img src="{{ url_for('static', filename='images/th.jpeg') }}" alt="ejfarms logo" class="logo"></a>
             <ul id="nav_list">
-                <li><a href="#">Home</a></li>
+                <li><a href="{{ url_for('app_views.home_page') }}">Home</a></li>
                 <li><a href="{{ url_for('app_views.cart') }}">Orders (<span id="cart-count">0</span>)</a></li>
                 <li><a href="{{ url_for('app_views.quiz') }}">Quiz</a></li>
-                <li><a href="#">Contact Us</a></li>
+                <li><a href="{{ url_for('app_views.contact_page') }}">Contact Us</a></li>
                 <button class="darkmode">Dark Mode</button>
             </ul>
         </nav>
