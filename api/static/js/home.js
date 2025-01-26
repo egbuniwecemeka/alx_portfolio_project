@@ -1,5 +1,6 @@
 /* global $ */
 $(document).ready(() => {
+    // Dark Mode Toggle
     $('.darkmode').click(function() {
         if ($('body').hasClass('dark')) {
             /* revert it back to normal mode */
@@ -15,4 +16,13 @@ $(document).ready(() => {
             $('.darkmode').text('Light Mode');
         }
     });
+
+    // Add click event to .places elements
+    $('.places').on('click', function() {
+        const url = $(this).data('url');
+        if (url) {
+            window.location.href = url;
+        }
+    })
+    
 });

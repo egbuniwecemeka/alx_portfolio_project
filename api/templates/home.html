@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EJ's Hatchery</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/homestyles.css') }}">
 </head>
 <body>
     <header class="header">
@@ -56,22 +56,22 @@
         </section>
 
         <div class="sections">
-            <section class="places">
+            <section class="places" data-url="{{ url_for('app_views.cart') }}">
                 <h1>Orders</h1>
                 <article class="orders">
                     <p></p>
                 </article>
             </section>
     
-            <section class="places">
-                <h1>Stores/Pickups</h1>
+            <section class="places" data-url="{{ url_for('app_views.quiz') }}">
+                <h1>Quiz</h1>
                 <article class="pickups">
                     <p></p>
                 </article>
             </section>
             
             <section class="places">
-                <h1>Categories</h1>
+                <h1>Contact Us</h1>
                 <article class="categories">
                     <p></p>
                 </article>
@@ -90,5 +90,6 @@
     <footer class="footer">Egbuniwe Farms</footer>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/home.js') }}"></script>
+
 </body>
 </html>
