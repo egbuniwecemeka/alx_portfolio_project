@@ -9,7 +9,7 @@
 <body>
     <header class="header">
         <nav>
-            <a href="#"><img src="{{ url_for('static', filename='images/th.jpeg') }}" alt="ejfarms logo" class="logo"></a>
+            <a href="{{ url_for('app_views.home_page') }}"><img src="{{ url_for('static', filename='images/th.jpeg') }}" alt="ejfarms logo" class="logo"></a>
             <ul id="nav_list">
                 <li><a href="#">Home</a></li>
                 <li><a href="{{ url_for('app_views.cart') }}">Orders (<span id="cart-count">0</span>)</a></li>
@@ -89,6 +89,6 @@
     <button onclick="">View the Project</button>
     <footer class="footer">Egbuniwe Farms</footer>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="../web_dynamic/1-script.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/home.js') }}"></script>
 </body>
 </html>
