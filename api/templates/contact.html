@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contactstyles.css') }}">
+</head>
+<body>
+    <header class="header">
+        <nav>
+            <a href="{{ url_for('app_views.home_page') }}"><img src="{{ url_for('static', filename='images/th.jpeg') }}" alt="ejfarms logo" class="logo"></a>
+            <ul id="nav_list">
+                <li><a href="{{ url_for('app_views.home_page') }}">Home</a></li>
+                <li><a href="{{ url_for('app_views.cart') }}">Orders (<span id="cart-count">0</span>)</a></li>
+                <li><a href="{{ url_for('app_views.quiz') }}">Quiz</a></li>
+                <li><a href="{{ url_for('app_views.contact_page') }}">Contact Us</a></li>
+                <button class="darkmode">Dark Mode</button>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Contact Us</h1>
+        <p class="description">
+          Have any questions, feedback, or issues? Reach out to us, and we’ll be happy to assist!
+        </p>
+      
+        <!-- Section for Person 1 -->
+        <div class="contact-card">
+          <h3>Blessing Chidewu</h3>
+          <p>
+            <strong>Email:</strong>
+            <a href="mailto:blessingchidewu3@gmail.com">Blessingchidewu3@gmail.com</a>
+          </p>
+          <p>
+            <strong>GitHub:</strong>
+            <a href="https://github.com/blessi30ng" target="_blank">GitHub Profile</a>
+          </p>
+          <p>
+            <strong>LinkedIn:</strong>
+            <a href="https://www.linkedin.com/in/blessing-chidewu-185734285/" target="_blank">LinkedIn Profile</a>
+          </p>
+        </div>
+      
+        <!-- Section for Person 2 -->
+        <div class="contact-card">
+          <h3>Egbuniwe Emmanuel</h3>
+          <p>
+            <strong>Email:</strong>
+            <a href="mailto:egbuniwecemeka@gmail.com">egbuniwecemeka@gmail.com</a>
+          </p>
+          <p>
+            <strong>GitHub:</strong>
+            <a href="https://github.com/egbuniwecemeka" target="_blank">GitHub Profile</a>
+          </p>
+          <p>
+            <strong>LinkedIn:</strong>
+            <a href="https://www.linkedin.com/in/egbuniwe-emmanuel-337ab2209/" target="_blank">LinkedIn Profile</a>
+          </p>
+        </div>
+    </div>
+    <footer class="footer">Egbuniwe Farms</footer>
+</body>
+</html>
