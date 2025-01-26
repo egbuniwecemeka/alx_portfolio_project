@@ -10,3 +10,4 @@ app_views = Blueprint('app_views', __name__, url_prefix='/')
 from api.views.home_route import *
 from api.views.cart_routes import *
 from api.views.quiz_routes import *
+from api.views.contact_route import *
